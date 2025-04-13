@@ -1,0 +1,40 @@
+h1{
+    margin: 10% 30% 5%;
+    margin-bottom: 0px;
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+.Color-grp{
+    margin: 100px auto 100px;
+    width: 80%;
+    text-align: center;
+}
+
+.color{
+    width: 100px;
+    height: 100px;
+    border: solid black 2px;
+    display: inline-block;
+}
+
+#green{
+    background-color: green;
+}
+
+#blue{
+    background-color: blue;
+}
+
+#white{
+    background-color: white;
+}
+
+#yellow{
+    background-color: yellow;
+}
+
+#grey{
+    background-color: grey;
+}

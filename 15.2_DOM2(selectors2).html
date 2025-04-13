@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom </title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thusday</div>
+        <div class="day">Friday</div>
+    </div>
+    <script>
+        const parent= document.querySelector('.parent')
+        console.log(parent); 
+            //.children allows access to the child elements of a specified DOM element
+            // the children are in the HTMLCollection format
+        console.log(parent.children);
+        console.log(parent.children[1].innerHTML);//->Tuesday 
+        
+            //accessed the second child and changed its color to orange
+        parent.children[1].style.color ='orange'
+        
+        //accessing child element from the parent
+        console.log(parent.firstElementChild); //-><div class="day">Monday</div>
+        console.log(parent.lastElementChild); //-><div class="day">Friday</div>
+
+        //accessing the parent-Element from the child-Element
+        const dayone=document.querySelector('.day');
+        console.log(dayone);//-><div class="day">Monday</div>
+        console.log(dayone.parentElement)
+            //.parentElement gives  parent Element with whole child-Elements in it
+        console.log(dayone.nextElementSibling);// -><div class="day" style="color: orange;">Tuesday</div>
+            //.nextElementSibling gives the next sibling element 
+
+        //.childNodes returns a NodeList of all Child nodes of a specific element
+            // which includes element nodes, text nodes and comment nodes
+        console.log("Nodes : ",parent.childNodes);
+
+    </script>
+</body>
+</html>

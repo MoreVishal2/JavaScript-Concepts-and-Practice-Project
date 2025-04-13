@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Document</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const li=document.createElement('li');
+        li.innerHTML=`${langName}`;
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage(""); //->
+    addLanguage(); //->undefined
+    addLanguage("python"); //->python
+    
+
+    function addOpLang(langName){
+        const li=document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector(".language").appendChild(li);
+    }
+    addOpLang("Ruby"); //->Ruby
+
+
+    //Edit
+    const secLang=document.querySelector('li:nth-child(2)')
+        //nth-child() selector is a CSS pseudo-class that allows you to select elements based on their position in a parent element's child list
+    const newli=document.createElement('li');
+    newli.innerHTML="CSS"
+    secLang.replaceWith(newli)
+
+    const tdLang=document.querySelector('li:nth-child(3)')
+    tdLang.outerHTML="<li>TypeScript (Replaced with Undefined)</li>"
+
+    
+    //remove
+    const lastLang= document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>

@@ -1,0 +1,27 @@
+body{
+    background-color: #121212;
+    color: #fff;
+}
+
+#box{
+    width: 400px;
+    height: 300px;
+    margin: 15% auto;
+    text-align: center;
+
+}
+
+.button{
+    margin: 15px auto;
+    font-size:x-large;
+    padding: 5px 10px;
+    font-weight: 700;
+    border-radius: 15px;
+}
+label{
+    font-size: larger;
+    font-weight: 600;
+}
+input{
+    padding: 4px 8px;
+}

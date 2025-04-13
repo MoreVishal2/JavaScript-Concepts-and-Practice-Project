@@ -1,0 +1,6 @@
+event , eventpropogation
+event bubbling,event capturing
+type, timestamp, defaultPrevented
+target, toElement, srcElement,currenttarget
+clientX, clientY, screeX,screenY
+altkey, ctrlkey,shiftkey, keyCode

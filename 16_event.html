@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <style>
+        html,body{
+            background-color: black;
+            display:flex;            
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            color: wheat;
+        }
+        img{
+            width: 250px;
+            object-fit: contain;
+        }
+        #photo{
+            background-color: rgb(23, 37, 97);
+            width: 300px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #parent{
+            background-color: rgb(18, 31, 87);
+            width: 350px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #grand_parent{
+            background-color: rgb(10, 20, 65);
+            width: 400px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #great_grand_parent{
+            background-color: rgb(4, 11, 42);
+            width: 450px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h3,p{
+            display: block;
+            margin: 0px;
+        }
+        p{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Click increase the size of the container and its parent container size</h3>
+    <p>This is Event Bubling</p>
+
+        <div id="great_grand_parent">
+            <div id="grand_parent">
+                <div id="parent">
+                    <div id="photo">
+                        <img id="img" src="sample-image.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+    <script>
+        const img=document.getElementById('img')
+        const photo=document.getElementById('photo')
+        const parent=document.getElementById('parent')
+        const grand_parent=document.getElementById('grand_parent')
+        const great_grand_parent=document.getElementById('great_grand_parent') 
+             
+
+        document.getElementById("img").addEventListener('click',function(e){
+            const width=img.clientWidth
+            const height=img.clientHeight
+            img.style.width=(width+20)+'px'
+            img.style.height=(height+20)+'px'
+        })
+        document.getElementById("photo").addEventListener('click',function(e){
+            const width=photo.clientWidth
+            const height=photo.clientHeight
+            photo.style.width=(width+20)+'px'
+            photo.style.height=(height+20)+'px'
+        })
+        document.getElementById("parent").addEventListener('click',function(e){
+            const width=parent.clientWidth
+            const height=parent.clientHeight
+            parent.style.width=(width+20)+'px'
+            parent.style.height=(height+20)+'px'
+        })
+        document.getElementById("grand_parent").addEventListener('click',function(e){
+            const width=grand_parent.clientWidth
+            const height=grand_parent.clientHeight
+            grand_parent.style.width=(width+20)+'px'
+            grand_parent.style.height=(height+20)+'px'
+        })
+        document.getElementById("great_grand_parent").addEventListener('click',function(e){
+            const width=great_grand_parent.clientWidth
+            const height=great_grand_parent.clientHeight
+            great_grand_parent.style.width=(width+20)+'px'
+            great_grand_parent.style.height=(height+20)+'px'
+        })
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+    <link rel="stylesheet" href="5_eventBubbling.css">
+</head>
+<body>
+    
+    <h3>Click on the layer to increase and Double-click to decrease, the size of the container along with its parent container size</h3>
+    <div id="checkbox">
+        <h5>Check the box to affect the container only</h5>
+        <label>
+            <input type="checkbox">
+            <span>All Parent Container size will Change (Event bubbling)</span>
+        </label>
+    </div>
+
+    <div id="wrapper">
+        <div id="great_grand_parent">
+            <div id="grand_parent">
+                <div id="parent">
+                    <div id="photo">
+                        <img id="img" src="sample-image.jpeg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const img=document.getElementById('img')
+        const photo=document.getElementById('photo')
+        const parent=document.getElementById('parent')
+        const grand_parent=document.getElementById('grand_parent')
+        const great_grand_parent=document.getElementById('great_grand_parent') 
+        
+
+        const inp=document.querySelector("input")// input from the checkbox
+        const sp=document.querySelector('span')
+
+        let prevSingleClick
+        let singleClick
+
+        inp.addEventListener('click',function(){
+            if(this.checked){
+                sp.textContent="Now only Container Which Clicked will Change"
+            }else{
+                sp.textContent="All Parent Container size will Change (Event bubbling)"
+            }
+        })
+
+        //click to increase the size
+        document.addEventListener('click',function(event){
+
+            if(singleClick){
+                clearTimeout(singleClick)
+            }
+
+            singleClick =setTimeout( function(){
+
+                if(prevSingleClick){
+                    prevSingleClick=false;
+                    return;
+                }
+
+                let ev=event.target;
+                if(!document.getElementById('wrapper').contains(ev)) return;
+                    //this if statement checks wheter the event was inside wrapper,
+                    //if not inside the wrapper-container it returns, resulting in leaving the function early 
+                if(inp.checked){
+                    const width=ev.clientWidth
+                    const height=ev.clientHeight
+                    ev.style.width=(width+20)+'px'
+                    ev.style.height=(height+20)+'px'
+                }else{
+                    while(ev && ev.tagName!="BODY"){
+                    const width=ev.clientWidth
+                    const height=ev.clientHeight
+                    ev.style.width=(width+20)+'px'
+                    ev.style.height=(height+20)+'px'
+                    ev=ev.parentNode
+                    }                
+                }
+            },300)
+
+             
+        });
+
+
+        //double click to decrease the size
+        document.addEventListener('dblclick',function(event){
+            prevSingleClick=true;
+            
+            setTimeout(function(){
+                prevSingleClick=false;
+            },300)
+            let ev=event.target;
+
+            if(!document.getElementById('wrapper').contains(ev)) return;
+                //this if statement checks wheter the event was inside wrapper,
+                //if not inside the wrapper-container it returns, resulting in leaving the function early 
+            if(inp.checked){
+                const width=ev.clientWidth
+                const height=ev.clientHeight
+                ev.style.width=(width - 20)+'px'
+                ev.style.height=(height - 20)+'px'
+            }else{
+                while(ev && ev.tagName!="BODY"){
+                const width=ev.clientWidth
+                const height=ev.clientHeight
+                ev.style.width=(width - 20)+'px'
+                ev.style.height=(height - 20)+'px'
+                ev=ev.parentNode
+                }                
+            } 
+        });
+    </script>
+</body>
+</html>

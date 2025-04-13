@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+</body>
+<script>
+    const ele= document.createElement('div');
+    console.log(ele);//<div></div>
+    ele.className ='main';
+    ele.id=Math.round(Math.random()*10 +1);
+    ele.setAttribute("title",'*** Title ***')
+    ele.style.backgroundColor='green'
+    ele.style.padding='10px'
+    ele.innerText="ABCD EFGHI"// .innerText first retrives the text then overwrite on it
+    const addText=document.createTextNode("qwertyui")
+    ele.appendChild(addText)// adds the text node to the ele
+        // all this code written created the element in the memory but does not reflect it on web page
+
+    //ele element node exist in the memory, now we add this child node the body, which will show changes to the web-page
+    document.body.appendChild(ele)
+</script>
+</html>

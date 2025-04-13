@@ -1,0 +1,24 @@
+nav{
+    text-align: center;
+    padding: 4% 10%;
+    font-size: xx-large;
+}
+
+.aClass{
+    width: 60%;
+    margin:auto auto;
+    padding-left: 15% ;
+
+}
+
+.projectLink{
+    display: inline-block;
+    background-color: rgb(84, 18, 146);
+    color: white;
+    font-size: x-large;
+    padding: 1% 5% ;
+    border-radius: 10px;
+    text-decoration: none;
+    width: 60%;
+    text-align: center;
+}
