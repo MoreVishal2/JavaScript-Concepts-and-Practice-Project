@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(37, 37, 37); color: wheat; ">
+    <p></p>
+</body>
+
+<script>
+    const p=document.querySelector("p")
+
+    let div=document.createElement("div")
+    div.style.display="flex";
+    div.style.flexDirection="row"
+    div.style.justifyContent="space-between"
+    div.style.width="230px"
+    div.style.backgroundColor="rgb(150, 149, 149)"
+    div.className="div_class"
+    div.style.color = "white"
+    div.style.padding="6px"
+    document.body.appendChild(div)
+
+    let imgDiv=document.createElement("div")
+    div.appendChild(imgDiv)
+
+    let contentDiv=document.createElement("div")
+    div.appendChild(contentDiv)
+
+    const requestUrl='https://api.github.com/users/octocat'
+    const xhr = new XMLHttpRequest();
+    p.innerHTML+="0 UNSENT client has been created. open() not called yet"
+
+    xhr.onreadystatechange=function(){ // this function prints the state when state changes
+        console.log(xhr.readyState);
+        if(xhr.readyState==1){
+            p.innerHTML+="<br>1 OPENED open() has been called"
+        }else if(xhr.readyState==2){
+            p.innerHTML+="<br>2 HEADERS_RECEIVED send() has been called, and headers and status are available"
+        }else if(xhr.readyState==3){
+            p.innerHTML+="<br>3 LOADING Downloading; responseText holds partial data"
+        }
+        else if(xhr.readyState==4){
+            p.innerHTML+="<br>4 DONE The operation is complete"
+            const data=JSON.parse(this.responseText)
+            
+            contentDiv.innerHTML=`
+                <p style="margin-top:30px;margin-bottom: 0px;">Username: ${data.login}</p>
+                <p style="margin-top: 0px ;">Followers:${data.followers}</p>
+                `;
+            imgDiv.innerHTML=`
+                <img src="${data.avatar_url}" width="100px" style="border-radius: 50px;">
+                `;
+        }
+    }
+    xhr.open('GET',requestUrl);
+    xhr.send();
+    </script>
+</html>
